@@ -9,19 +9,25 @@ import static org.junit.Assert.*;
 public class CheckoutSteps{
 
         int bananaPrice = 0;
-        Checkout checkout;
+        int applePrice = 0;
+        Checkout checkout = new Checkout();
    
  
 	@Given("^the price of a \"(.*?)\" is (\\d+)c$")
 	public void thePriceOfAIsC(String name, int price) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
-           int bananaPrice = price;
+	    if(name.equals("banana"))
+           this.bananaPrice = price;
+        else if (name.equals("apple"))
+        	this.applePrice = price;
 	}
 
 	@When("^I checkout (\\d+) \"(.*?)\"$")
 	public void iCheckout(int itemCount, String itemName) throws Throwable {
-           checkout = new Checkout(); 
-           checkout.add(itemCount,bananaPrice);
+		   if(itemName.equals("banana"))
+           	checkout.add(itemCount,bananaPrice);
+           else if (itemName.equals("apple"))
+           	checkout.add(itemCount,applePrice);
 	}
 
 	@Then("^the total price should be (\\d+)c$")
