@@ -1,4 +1,4 @@
-# Cucumber JVM Learning
+# Cucumber JVM Command Line Example
 
      Basic Example using CucumberJVM command line
 
